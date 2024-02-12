@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Créer un compte</title>
+    <style>
+        body, form {
+            margin: 0 auto;
+            width: 50%; /* ajustez la largeur selon vos préférences */
+        }
+    </style>
+</head>
+<body style="background-color: lightgreen;">
+    <h2>Créer un compte</h2>
+    <form action="traitement.php" method="post">
+        <label for="nom">Nom :</label><br>
+        <input type="text" id="nom" name="nom" required><br><br>
+        
+        <label for="prenom">Prénom :</label><br>
+        <input type="text" id="prenom" name="prenom" required><br><br>
+        
+        <label for="email">Email :</label><br>
+        <input type="email" id="email" name="email" required><br><br>
+        
+        <label for="mot_de_passe">Mot de passe :</label><br>
+        <input type="password" id="mot_de_passe" name="mot_de_passe" required><br><br>
+        
+        <input type="submit" value="Créer un compte">
+    </form>
+    
+    <p>Vous avez déjà un compte ? <a href="connexion.html">Connectez-vous ici</a>.</p>
+    <p>
+
+Notre engagement envers la protection de votre vie privée est au cœur de tout ce que nous faisons. Nous comprenons à quel point vos informations personnelles sont précieuses, c'est pourquoi nous prenons des mesures rigoureuses pour assurer leur sécurité. Nous nous engageons à respecter votre vie privée en toutes circonstances, en veillant à ce que vos données personnelles restent confidentielles et sécurisées. Notre politique de confidentialité détaille nos pratiques en matière de collecte, d'utilisation et de protection de vos informations, et nous nous efforçons de toujours agir dans le meilleur intérêt de nos clients. Vous pouvez avoir confiance en nous pour protéger vos données avec intégrité et transparence, car votre confiance est notre priorité absolue.</p>
+</body>
+</html>

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ma Boutique</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .product {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .product img {
+            width: 100px; /* ajustez la taille selon vos besoins */
+            margin-right: 20px;
+            border-radius: 5px;
+        }
+        .product .description {
+            flex: 1;
+        }
+        .product .description h3 {
+            margin-top: 0;
+        }
+        .product .description p {
+            margin-bottom: 0;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            margin-bottom: 10px;
+        }
+        input[type="text"], input[type="number"] {
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        input[type="submit"] {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .cart-btn {
+            background-color: #337ab7;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+        .order-btn {
+            background-color: #5cb85c;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+        .remove-btn {
+            background-color: #d9534f;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Ma Boutique</h1>
+        
+        <!-- Ajouter des images et des descriptions ici -->
+        <div class="product">
+            <img src="../img/lop.jpg" alt="Magasin">
+            <div class="description">
+                <h3>42$</h3>
+                <p>Cette image représente notre magasin.</p>
+                <button class="cart-btn" onclick="addToCart(42)">Ajouter au panier</button>
+            </div>
+        </div>
+        
+        <div class="product">
+            <img src="../img/shop.jpg" alt="Vêtement">
+            <div class="description">
+                <h3>49$</h3>
+                <p>Cette image représente nos vêtements en vente.</p>
+                <button class="cart-btn" onclick="addToCart(49)">Ajouter au panier</button>
+            </div>
+        </div>
+        
+        <div class="product">
+            <img src="../img/shoping.jpg" alt="Vêtement">
+            <div class="description">
+                <h3>47$</h3>
+                <p>Cette image représente nos vêtements en vente.</p>
+                <button class="cart-btn" onclick="addToCart(47)">Ajouter au panier</button>
+            </div>
+        </div>
+        
+        <div class="product">
+            <img src="../img/logo.jpg" alt="Vêtement">
+            <div class="description">
+                <h3>47$</h3>
+                <p>Cette image représente nos vêtements en vente.</p>
+                <button class="cart-btn" onclick="addToCart(47)">Ajouter au panier</button>
+            </div>
+        </div>
+        
+        <!-- Ajouter autant d'images et de descriptions que nécessaire -->
+        
+        <form action="#">
+            <label for="nom_produit">Nom du produit :</label>
+            <input type="text" id="nom_produit" name="nom_produit" required>
+            
+            <label for="prix_produit">Prix du produit :</label>
+            <input type="number" id="prix_produit" name="prix_produit" required>
+            
+            <input type="submit" value="Ajouter le produit">
+        </form>
+        
+        <div id="cart">
+            <h2>Panier</h2>
+            <ul id="cartItems">
+                <!-- Les éléments du panier seront ajoutés ici dynamiquement -->
+            </ul>
+            <button class="order-btn" onclick="checkout()">Passer commande</button>
+        </div>
+    </div>
+
+    <script>
+        // Tableau de produits dans le panier
+        const cartProducts = [];
+
+        // Fonction pour ajouter un produit au panier
+        function addToCart(price) {
+            const productName = document.querySelector('.product .description h3').innerText;
+            const productPrice = price;
+            cartProducts.push({ name: productName, price: productPrice });
+            displayCart();
+        }
+
+        // Fonction pour supprimer un produit du panier
+        function removeFromCart(index) {
+            cartProducts.splice(index, 1);
+            displayCart();
+        }
+
+        // Fonction pour afficher les produits dans le panier
+        function displayCart() {
+            const cartItems = document.getElementById("cartItems");
+            cartItems.innerHTML = "";
+            cartProducts.forEach((product, index) => {
+                const item = document.createElement("li");
+                item.innerHTML = `
+                    ${product.name} - ${product.price}$
+                    <button class="remove-btn" onclick="removeFromCart(${index})">Supprimer</button>
+                `;
+                cartItems.appendChild(item);
+            });
+        }
+
+        // Fonction de paiement (à adapter)
+        function checkout() {
+            alert("Votre commande a été passée!");
+            // Vous pouvez ajouter ici la logique de paiement réelle
+            cartProducts.length = 0; // Réinitialiser le panier après la commande
+            displayCart();
+        }
+    </script>
+</body>
+</html>
